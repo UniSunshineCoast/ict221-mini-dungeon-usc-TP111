@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label text="TUTORIAL" textAlignment="CENTER" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Tahoma Bold" size="38.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets bottom="10.0" top="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </top>
+   <bottom>
+      <HBox alignment="CENTER" fillHeight="false" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" BorderPane.alignment="CENTER">
+         <children>
+            <VBox alignment="BOTTOM_CENTER" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT" fillHeight="false">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/entrance.png" />
+                           </image>
+                        </ImageView>
+                        <VBox fillWidth="false" maxWidth="180.0">
+                           <children>
+                              <Label text="Entrance">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="10.0" layoutY="10.0" text="Entry point into the maze" wrapText="true">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin></HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/player.png" />
+                           </image>
+                        </ImageView>
+                        <VBox prefWidth="180.0">
+                           <children>
+                              <Label text="Player">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <Label text="Moves in 4 directions: left, right, up, and down" wrapText="true">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/melee.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="180.0">
+                           <children>
+                              <Label text="Melee Mutant">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Stepping on: -2 HP, +2 Score" wrapText="true">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="58.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/ranged.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="220.0">
+                           <children>
+                              <Label text="Ranged Mutant">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Attacks from 2 tiles away: -2 HP (50%) Stepping on: +2 Score" wrapText="true">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets right="5.0" />
+               </HBox.margin>
+            </VBox>
+            <VBox alignment="BOTTOM_CENTER" layoutX="10.0" layoutY="10.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/ladder.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="180.0">
+                           <children>
+                              <Label text="Ladder">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Advances to the next level or exits the game" wrapText="true">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/gold.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="180.0">
+                           <children>
+                              <Label text="Gold">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Stepping on: +2 Score">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="10.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/potion.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="180.0">
+                           <children>
+                              <Label text="Health Potion">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Stepping on: +2 HP">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="58.0">
+                     <children>
+                        <ImageView fitHeight="48.0" fitWidth="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@/images/trap.png" />
+                           </image>
+                        </ImageView>
+                        <VBox maxWidth="180.0">
+                           <children>
+                              <Label text="Trap">
+                                 <font>
+                                    <Font name="Tahoma" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label text="Stepping on: -2 HP">
+                                 <font>
+                                    <Font name="Tahoma" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets top="5.0" />
+                     </VBox.margin>
+                  </HBox>
+               </children>
+               <HBox.margin>
+                  <Insets left="5.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <BorderPane.margin>
+            <Insets bottom="20.0" top="10.0" />
+         </BorderPane.margin>
+         <padding>
+            <Insets left="30.0" />
+         </padding>
+      </HBox>
+   </bottom>
+   <center>
+      <Label text="Welcome to MiniDungeon, an exciting dungeon-exploration game set in a mysterious maze! Navigate through two challenging dungeon levels, each represented as a 10 x 10 grid filled with treasures, mutants, traps, and potions. &#10;&#10;Your goal: achieve the highest possible score by collecting gold, defeating mutants, and safely escaping the dungeon through the ladder—all within a limited number of moves! &#10;&#10;Use the arrow buttons to move around but be wary of the enemies and traps. If your HP drops to 0, you'll lose.&#10;&#10;Good luck!" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+         <font>
+            <Font name="Tahoma" size="18.0" />
+         </font>
+         <BorderPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </BorderPane.margin>
+      </Label>
+   </center>
+</BorderPane>
