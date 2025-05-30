@@ -457,6 +457,7 @@ public class GameEngine {
     public void saveGame () {
         // Save the current game state to a file
         try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\savegame.txt")) {
+            writer.write("\n"); // The first line is empty since the first line is used to check if the file is empty
             writer.write("Level: " + level + "\n");
             writer.write("PlayerPos: " + player.getRow() + "," + player.getCol() + "\n");
             writer.write("Steps: " + getCurrSteps() + "\n");
@@ -485,8 +486,19 @@ public class GameEngine {
         // Load the game state from a file
         try (BufferedReader reader = new BufferedReader(new FileReader("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\savegame.txt"))) {
             String line;
+
+            // Check if the file is empty
+            if(reader.readLine() == null) {
+                printEvent("Save file is empty. Cannot load game.", RED);
+                return;
+            }
+
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
+                if (parts[0] == null) {
+                    System.err.println("Invalid line in save file: " + line);
+                    continue; // Skip empty lines or malformed lines
+                }
                 switch (parts[0]) {
                     case "Level:":
                         if(Integer.parseInt(parts[1].trim() ) < getLevel()) {
@@ -562,7 +574,7 @@ public class GameEngine {
                 }
             }
         } catch (IOException e) {
-            System.err.println("Error loading game: " + e.getMessage());
+            System.err.println("Error loading save file: " + e.getMessage());
         }
     }
 

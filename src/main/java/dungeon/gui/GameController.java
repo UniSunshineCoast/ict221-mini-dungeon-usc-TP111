@@ -156,14 +156,12 @@ public class GameController {
         btSave.setOnMouseClicked(event -> {
             if (!engine.isGameOver()) {
                 engine.saveGame();
-                engine.printEvent("Game saved.", null);
             }
         });
 
         btLoad.setOnMouseClicked(event -> {
             if(!engine.isGameOver()) {
                 engine.loadGame();
-                engine.printEvent("Game loaded.", null);
                 updateGUI();
             }
         });
