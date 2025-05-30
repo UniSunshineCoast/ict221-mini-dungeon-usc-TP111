@@ -1,4 +1,6 @@
-package dungeon.engine;
+package dungeon.engine.gameobjects;
+
+import dungeon.engine.GameEngine;
 
 public class Gold extends GameObject{
     private static final int SCORE = 2; // Score value for picking up gold

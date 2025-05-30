@@ -1,5 +1,6 @@
 package dungeon.engine;
 
+import dungeon.engine.gameobjects.*;
 import dungeon.gui.GameController;
 import javafx.scene.image.Image;
 

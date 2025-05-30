@@ -1,4 +1,6 @@
-package dungeon.engine;
+package dungeon.engine.gameobjects;
+
+import dungeon.engine.GameEngine;
 
 public class Trap extends GameObject{
     private static final int DAMAGE = 2; // Damage dealt by the trap

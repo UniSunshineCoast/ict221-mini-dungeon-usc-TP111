@@ -1,4 +1,6 @@
-package dungeon.engine;
+package dungeon.engine.gameobjects;
+
+import dungeon.engine.GameEngine;
 
 public class Player extends GameObject {
     private int row;

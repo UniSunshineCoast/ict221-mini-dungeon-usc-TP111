@@ -1,5 +1,6 @@
 package dungeon.engine;
 
+import dungeon.engine.gameobjects.GameObject;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 

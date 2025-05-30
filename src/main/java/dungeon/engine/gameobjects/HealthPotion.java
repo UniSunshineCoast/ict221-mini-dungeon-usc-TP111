@@ -1,4 +1,6 @@
-package dungeon.engine;
+package dungeon.engine.gameobjects;
+
+import dungeon.engine.GameEngine;
 
 public class HealthPotion extends GameObject{
     private static final int HEAL = 4; // Amount of health restored by the potion
