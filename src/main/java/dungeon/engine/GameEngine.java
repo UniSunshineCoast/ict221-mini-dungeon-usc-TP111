@@ -5,21 +5,22 @@ import dungeon.gui.GameController;
 import javafx.scene.image.Image;
 
 import java.awt.Point;
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.*;
 import java.util.function.Supplier;
 import java.time.LocalDate;
 
+/**
+ * GameEngine class represents the core logic of the dungeon game.
+ * It manages the game state, player actions, and interactions with game objects.
+ * The game can run in either console mode or GUI mode.
+ */
 public class GameEngine {
 
     /**
      * ANSI escape codes for colored console output.
      * These codes are used to format the text color in the console.
      */
-
     public static final String RESET = "\u001B[0m";
     public static final String BOLD = "\u001B[1m";
     public static final String CYAN = "\u001B[36m";
@@ -255,7 +256,7 @@ public class GameEngine {
      *
      * @param currSteps the new number of steps taken by the player.
      */
-    private void setCurrSteps(int currSteps) {
+    public void setCurrSteps(int currSteps) {
         this.currSteps = currSteps;
     }
 
@@ -444,7 +445,7 @@ public class GameEngine {
         if (getScore() < 0) return; // Don't write negative scores
 
         // Append the score to the file
-        try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\leaderboard.txt", true)) {
+        try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111/src/main/resources/data/leaderboard.txt", true)) {
             writer.write(content + "\n");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());
@@ -457,7 +458,9 @@ public class GameEngine {
      */
     public void saveGame () {
         // Save the current game state to a file
-        try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\savegame.txt")) {
+        File file = new File("ict221-mini-dungeon-usc-TP111/src/main/resources/data/savegame.txt");
+        file.getParentFile().mkdirs();
+        try (FileWriter writer = new FileWriter(file)) {
             writer.write("\n"); // The first line is empty since the first line is used to check if the file is empty
             writer.write("Level: " + level + "\n");
             writer.write("PlayerPos: " + player.getRow() + "," + player.getCol() + "\n");
@@ -485,7 +488,7 @@ public class GameEngine {
      */
     public void loadGame () {
         // Load the game state from a file
-        try (BufferedReader reader = new BufferedReader(new FileReader("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\savegame.txt"))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader("ict221-mini-dungeon-usc-TP111/src/main/resources/data/savegame.txt"))) {
             String line;
 
             // Check if the file is empty

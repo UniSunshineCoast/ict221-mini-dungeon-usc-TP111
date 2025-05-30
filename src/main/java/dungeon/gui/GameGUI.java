@@ -7,8 +7,8 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 /**
- * GUI for the Maze Runner Game.
- * NOTE: Do NOT run this class directly in IntelliJ - run 'RunGame' instead.
+ * Main GUI class for the MiniDungeon game.
+ * This class initializes the JavaFX application and loads the main menu GUI.
  */
 public class GameGUI extends Application {
 

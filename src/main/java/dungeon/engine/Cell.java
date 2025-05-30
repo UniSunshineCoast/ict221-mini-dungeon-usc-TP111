@@ -4,9 +4,13 @@ import dungeon.engine.gameobjects.GameObject;
 import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 
+/**
+ * Represents a cell in the dungeon grid.
+ * Each cell can contain a GameObject and has a floor tile image.
+ */
 public class Cell extends StackPane {
 
-    GameObject go = null;
+    private GameObject go = null;
     private Image floorTile;
 
     public void setGameObject(GameObject go) {

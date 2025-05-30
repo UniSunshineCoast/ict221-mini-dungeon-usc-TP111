@@ -10,6 +10,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller for the main menu of the Dungeon Game.
+ * Handles starting the game and opening the leaderboard.
+ */
 public class MenuController {
     @FXML
     private Button btStart;

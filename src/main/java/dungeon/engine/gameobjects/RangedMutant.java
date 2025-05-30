@@ -4,6 +4,11 @@ import dungeon.engine.GameEngine;
 
 import java.util.Random;
 
+/**
+ * Represents a ranged mutant in the dungeon.
+ * The ranged mutant can attack the player from a distance.
+ * When killed, it increases the player's score.
+ */
 public class RangedMutant extends GameObject{
     private static final Random rand = new Random();
     private static final int ATTACK_RANGE = 2; // Ranged attack range

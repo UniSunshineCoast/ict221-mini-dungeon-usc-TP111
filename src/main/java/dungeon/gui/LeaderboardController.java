@@ -7,6 +7,10 @@ import javafx.scene.control.Label;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Controller for the leaderboard GUI.
+ * Displays the top 5 scores from the game.
+ */
 public class LeaderboardController {
     @FXML
     private Label top1, top2, top3, top4, top5;
@@ -48,6 +52,9 @@ public class LeaderboardController {
         populateLeaderboard();
     }
 
+    /**
+     * Populates the labels with the top 5 scores.
+     */
     private void populateLeaderboard() {
         for (int i = 0; i < leaderboardLabels.size(); i++) {
             if (i < topScores.size()) {

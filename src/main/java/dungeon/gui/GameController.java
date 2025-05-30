@@ -18,8 +18,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Controls the game GUI and handles user interactions.
+ * It manages the game state, updates the UI, and responds to player actions.
+ */
 public class GameController {
-
     // UI Elements
     @FXML
     private GridPane gridPane;

@@ -2,6 +2,10 @@ package dungeon.engine.gameobjects;
 
 import dungeon.engine.GameEngine;
 
+/**
+ * Represents a gold coin in the dungeon that can be picked up by the player.
+ * When the player picks up the gold, they receive a score increase.
+ */
 public class Gold extends GameObject{
     private static final int SCORE = 2; // Score value for picking up gold
 

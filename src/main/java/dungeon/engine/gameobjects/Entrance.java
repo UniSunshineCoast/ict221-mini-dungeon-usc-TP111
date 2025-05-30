@@ -2,6 +2,10 @@ package dungeon.engine.gameobjects;
 
 import dungeon.engine.GameEngine;
 
+/**
+ * Represents an entrance in the dungeon.
+ * It does not have any special behavior when the player enters it,
+ */
 public class Entrance extends GameObject{
 
     public Entrance() {

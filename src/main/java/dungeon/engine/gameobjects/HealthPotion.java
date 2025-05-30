@@ -2,6 +2,10 @@ package dungeon.engine.gameobjects;
 
 import dungeon.engine.GameEngine;
 
+/**
+ * Represents a health potion in the dungeon that restores the player's health when picked up.
+ * The health potion heals a fixed amount of health points (HP) when the player enters it.
+ */
 public class HealthPotion extends GameObject{
     private static final int HEAL = 4; // Amount of health restored by the potion
 

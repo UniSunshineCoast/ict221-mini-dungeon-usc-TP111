@@ -2,6 +2,10 @@ package dungeon.engine.gameobjects;
 
 import dungeon.engine.GameEngine;
 
+/**
+ * Represents a melee mutant in the dungeon.
+ * The melee mutant deals damage to the player and increases the player's score when killed.
+ */
 public class MeleeMutant extends GameObject{
     private static final int SCORE = 2; // Score value for killing the melee mutant
     private static final int DAMAGE = 2; // Damage dealt by the melee mutant
