@@ -253,6 +253,8 @@ public class GameController {
             for (int x = 0; x < engine.getSize(); x++) {
                 Cell cell = map[x][y];
                 if (cell.getGameObject() != null) {
+                    // Proč nepoužít Enum, který by definoval všechny možné game objekty?
+                    // Chápu, že se to pak definuješ při vytváření instanací GameObjectů, ale enumy ti nedovolí se překlepnout.
                     ImageView gameObjectImage = switch (cell.getGameObject().getSymbol()) {
                         case 'M' -> new ImageView(melee);
                         case 'R' -> new ImageView(ranged);

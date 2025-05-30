@@ -21,6 +21,8 @@ public class RangedMutant extends GameObject{
         engine.setScore(engine.getScore() + SCORE); // Increase player's score by score value
     }
 
+    // Toto je taková nějaká basic metoda, co by mohlo mít víc monster.
+    // Co takto udělat MonsterGameObject, která bude mít abstraktní metodu tryAttackPlayer?
     public void tryAttackPlayer(GameEngine engine, int myRow, int myCol) {
         int playerRow = engine.getPlayer().getRow();
         int playerCol = engine.getPlayer().getCol();

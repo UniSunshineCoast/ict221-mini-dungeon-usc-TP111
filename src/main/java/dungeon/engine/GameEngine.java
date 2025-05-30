@@ -20,6 +20,7 @@ public class GameEngine {
      * These codes are used to format the text color in the console.
      */
 
+    // Moc se mi líbí barevný text, nice
     public static final String RESET = "\u001B[0m";
     public static final String BOLD = "\u001B[1m";
     public static final String CYAN = "\u001B[36m";
@@ -28,11 +29,18 @@ public class GameEngine {
     public static final String GREEN = "\u001B[32m";
     public static final String BLUE = "\u001B[34m";
 
+    // Tyto komentáře skvělý, ale neukážou se v našeptávači v IDE. Aby se zobrazil komentář i tam, musí být zapsaný v javadocs formátu.
+    /**
+     * Ten se píše takto.
+     */
     private static final int SIZE = 10; // Default size of the game board
     public static boolean GUI; // true = GUI, false = console
 
+    // Dále, co se dělá - seskupuješ si private final fieldy k sobě. Teď je to tady rozházené a hlavně nepřehledné. Ale to je maličkost
     private int level = 1; // Current level of the game, starts at 1
     private final int maxLevel = 2; // Maximum level, currently only 2 levels are supported
+    // 3D array... functional programming it is! Programuješ v OOP. Od toho tady máš třídy - Co takto mít třídu Level, která bude mít jen 2D array?
+    // Třeba budeš chtít přidat další vlastnosti k levelu... teď co, máš 3D array cellů a to je vše.
     private final Cell[][][] maps = new Cell[maxLevel][][]; // Array to hold maps for each level
 
     private int currSteps = 0; // Current number of steps taken by the player
@@ -46,6 +54,7 @@ public class GameEngine {
     private final Player player; // The player object representing the player in the game
     private GameController gameController; // The GameController for GUI mode, can be null for console mode
     private int eventOrder = 0; // Used to order events in the event log
+    // Super, že si tady použila jednu instanci scanneru a neděláš ji znovu a znovu
     private final Scanner scanner = new Scanner(System.in); // Scanner for console input
 
     /**
@@ -108,12 +117,18 @@ public class GameEngine {
             System.out.print("Move (u/d/l/r): ");
             String input = scanner.nextLine().trim().toLowerCase();
 
+            // Bylo by fajn zde uvést nějaké constatní fieldy, které definují tlačítka
+            // public static final String MOVE_UP = "u"; atd.
             switch (input) {
                 case "u": movePlayer(true, true); break;
                 case "d": movePlayer(true, false); break;
                 case "r": movePlayer(false, true); break;
                 case "l": movePlayer(false, false); break;
-                default: System.out.println("Invalid input!");
+                // Jen fun fact - chyby můžeš printit do konzole pomocí System.err.println()
+                // je to technicky jiný stream než System.out, ale v konzoli to vypadá stejně. Každopádně
+                // třeba na linuxu si budeš tento stream moci přesměrovat do jiného souboru a logovat jen chyby.
+                // pozdější EDIT: vidím že to v jiných částech je, nevím jestli to tam dal copilot, ale je to good practice.
+                default: System.err.println("Invalid input!");
             }
         }
     }
@@ -138,6 +153,10 @@ public class GameEngine {
             newCell = getMap()[newRow][newCol];
             GameObject steppedOnObject = newCell.getGameObject();
 
+            // Namísto těchto checků by se mohla vytvořit abstraktní metoda isSteppable, která by vracela true/false
+            // Takže implementace Entrace by zde vrátila false, Trap také, ale ostatní by vracely true.
+            // Příklad:
+            // if currentCell.getGameObject().isSteppable() {
             if (!(currentCell.getGameObject() instanceof Entrance) && !(currentCell.getGameObject() instanceof Trap)) {
                 //Delete the current cell's game object unless it's the entrance or a trap
                 currentCell.setGameObject(null);
@@ -153,6 +172,7 @@ public class GameEngine {
 
             if (steppedOnObject != null) {
                 // If there's a game object in the new cell, call its onPlayerEnter method
+                // dependency injection, super
                 steppedOnObject.onPlayerEnter(this);
             }
 
@@ -184,6 +204,9 @@ public class GameEngine {
      *
      * @return the player object.
      */
+    // Koukni se na project lombok. Dovolí ti nepsát gettery / settery. Ušetří ti to čas!
+    // Nahoře, u fieldů, by jsi pak měla třeba private @Getter Player player;
+    // a automaticky by se ti vytvořila getPlayer() metoda
     public Player getPlayer() {
         return player;
     }
@@ -444,6 +467,8 @@ public class GameEngine {
         if (getScore() < 0) return; // Don't write negative scores
 
         // Append the score to the file
+        // Stejný, jako v LeaderboardController. Pokud budeš mít zkompilovaný .jar, tak se ti nepodaří najít soubor v resources/data/leaderboard.txt
+        // Navíc, proč v GameEngine manipuluješ s leaderboardem, když tady máš LeaderboardController?
         try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\leaderboard.txt", true)) {
             writer.write(content + "\n");
         } catch (IOException e) {
@@ -457,6 +482,7 @@ public class GameEngine {
      */
     public void saveGame () {
         // Save the current game state to a file
+        // Stejný jako v LeaderboardController. Pokud budeš mít zkompilovaný .jar, tak se ti nepodaří najít soubor v resources/data/savegame.txt
         try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\savegame.txt")) {
             writer.write("\n"); // The first line is empty since the first line is used to check if the file is empty
             writer.write("Level: " + level + "\n");
@@ -469,7 +495,11 @@ public class GameEngine {
             for (int y = 0; y < getSize(); y++) {
                 for (int x = 0; x < getSize(); x++) {
                     Cell cell = getMap()[y][x];
+                    // Radil bych - java je verbose jazyk. Tak nech verbose názvy proměnných taky - vidím "go" a hned nevím, že je to "gameObject".
+                    // Každopádně dá se argumentovat, že se tato třída používa na hodně místech, tak je to ok. Jelikož když se třeba zkracuje "context" tak se píše "ctx".
+                    // Každopádně "ctx" je celkem popisující co to je - context. Go? Pokemon GO?
                     GameObject go = cell.getGameObject();
+                    // Ouch. Tady by byl perfektní enum než používat reflekci k získání class name.
                     String objectInfo = (go != null) ? go.getClass().getSimpleName() : "None";
                     writer.write("Cell (" + y + "," + x + "): " + objectInfo + "\n");
                 }
@@ -494,6 +524,8 @@ public class GameEngine {
                 return;
             }
 
+            // V budoucnosti je určitě vhodné to ukládat do jsonu, popř. vlastního formátu.
+            // Toto je velmi human readible formát a je to oprus parsovat v kodu. Jedna mezera a rozsype se to jak python interpretor.
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(" ");
                 if (parts[0] == null) {
@@ -541,6 +573,7 @@ public class GameEngine {
                         getMap()[row][col].setGameObject(null);
 
                         // Set the game object based on the type
+                        // Taky se zde nabízí použít enumy
                         switch (objectType) {
                             case "None":
                                 getMap()[row][col].setGameObject(null);
@@ -575,6 +608,7 @@ public class GameEngine {
                 }
             }
         } catch (IOException e) {
+            // Copilot sem dal System.err?
             System.err.println("Error loading save file: " + e.getMessage());
         }
     }
@@ -606,6 +640,7 @@ public class GameEngine {
         // Generate the entrance based on the player's position (bottom left by default, variable on second level)
         getMap()[player.getRow()][player.getCol()].setGameObject(new Entrance());
 
+        // Super
         // Add objects
         addMultiple(gameObjects, Ladder::new, 1);
         addMultiple(gameObjects, Trap::new, 5);
@@ -632,6 +667,7 @@ public class GameEngine {
         }
 
         // If GUI is true, set random floor tiles for each cell
+        // nice touch
         if (GUI) {
             Random rand = new Random();
             for (int y = 0; y < getSize(); y++) {
@@ -701,4 +737,12 @@ public class GameEngine {
         GameEngine engine = new GameEngine(SIZE, difficulty);
         engine.runConsoleLoop();
     }
+
+    // Nabízí se game engine třídu nějak rozkouskovat. Ale nad tím by se člověk musel více zamyslet. 700 řádků není moc, ale už se to stává méně přehledné.
+    // Dokážu si představit, že třeba #saveGame() a #loadGame() by mohly být v jiné třídě, která by se starala o ukládání a načítání hry.
+    // Pokud by člověk chtěl být jooooo fajn, tak GameEngine vůbec nebude vědět, zda je v GUI nebo v konzoli. Bude dělat výpočty regardless of the mode.
+    // Pak by zde byla nějaká abstraktní třída, třeba GameView, která by měla metody jako #printMap(), #printEvent() a další. Ty by se pak rozhodli, podle implementace.
+    //  Třeba by zde byla ConsoleGameView, která by printovala do konzole, a GUIGameView, která by printovala do GUI.
+
+    // Poslední poznámka: https://www.jetbrains.com/help/idea/reformat-and-rearrange-code.html
 }
