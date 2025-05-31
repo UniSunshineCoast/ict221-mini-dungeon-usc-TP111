@@ -445,7 +445,7 @@ public class GameEngine {
         if (getScore() < 0) return; // Don't write negative scores
 
         // Append the score to the file
-        try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111/src/main/resources/data/leaderboard.txt", true)) {
+        try (FileWriter writer = new FileWriter("ict221-mini-dungeon-usc-TP111/src/main/resources/data/scores.txt", true)) {
             writer.write(content + "\n");
         } catch (IOException e) {
             System.err.println("Error writing to file: " + e.getMessage());

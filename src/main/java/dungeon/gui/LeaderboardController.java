@@ -25,7 +25,7 @@ public class LeaderboardController {
         leaderboardLabels = List.of(top1, top2, top3, top4, top5);
 
         // Read existing scores from the file
-        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\leaderboard.txt"))) {
+        try (java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.FileReader("ict221-mini-dungeon-usc-TP111\\src\\main\\resources\\data\\scores.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 try {
