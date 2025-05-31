@@ -2,7 +2,7 @@ import dungeon.engine.gameobjects.Player;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestPlayer {
+class PlayerTest {
 
     @Test
     void testMoveTo() {

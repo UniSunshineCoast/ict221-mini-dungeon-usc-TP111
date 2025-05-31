@@ -4,7 +4,7 @@ import dungeon.engine.gameobjects.GameObject;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestCell {
+class CellTest {
 
     @Test
     void testSetGameObject_andGetGameObject() {

@@ -2,7 +2,7 @@ import dungeon.engine.ScoreEntry;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
-class TestScoreEntry {
+class ScoreEntryTest {
 
     @Test
     void testEquals() {

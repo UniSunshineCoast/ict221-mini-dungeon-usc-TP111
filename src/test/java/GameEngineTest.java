@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.io.File;
 import java.nio.file.Files;
 
-public class TestGameEngine {
+public class GameEngineTest {
 
     private GameEngine engine;
 
