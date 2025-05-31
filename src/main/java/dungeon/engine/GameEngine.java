@@ -114,7 +114,7 @@ public class GameEngine {
                 case "d": movePlayer(true, false); break;
                 case "r": movePlayer(false, true); break;
                 case "l": movePlayer(false, false); break;
-                default: System.out.println("Invalid input!");
+                default: System.err.println("Invalid input!");
             }
         }
     }
